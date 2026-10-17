@@ -70,12 +70,17 @@ kbd{font-family:var(--mono);font-size:11px;border:1px solid rgba(236,230,214,.35
   white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;pointer-events:none}
 body.touch #hint{bottom:calc(env(safe-area-inset-bottom,0px) + 196px)}
 
-#callout{position:fixed;left:0;right:0;top:24%;text-align:center;pointer-events:none;opacity:0}
-#callout.show{animation:pop 1.6s ease-out forwards}
-#callout .big{font-family:var(--display);font-style:italic;font-weight:700;font-size:clamp(30px,6vw,58px);letter-spacing:.04em;
-  text-shadow:0 0 24px rgba(143,227,255,.55),0 2px 0 rgba(0,0,0,.6);text-wrap:balance}
-#callout .sub{font-size:13px;color:var(--amber);letter-spacing:.08em;margin-top:4px}
-@keyframes pop{0%{opacity:0;transform:scale(.85)}12%{opacity:1;transform:scale(1.04)}22%{transform:scale(1)}80%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+#callout{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);max-width:min(420px,60vw);
+  text-align:left;pointer-events:none;opacity:0;border-left:2px solid var(--amber);padding:6px 36px 6px 12px;
+  background:linear-gradient(90deg,rgba(8,11,20,.78),rgba(8,11,20,0))}
+#callout.show{animation:pop 1.8s ease-out forwards}
+#callout .big{font-family:var(--display);font-style:italic;font-weight:700;font-size:clamp(17px,2vw,24px);letter-spacing:.04em;line-height:1.1;
+  text-shadow:0 0 14px rgba(143,227,255,.35),0 1px 0 rgba(0,0,0,.6);text-wrap:balance}
+#callout .sub{font-size:11px;color:var(--amber);letter-spacing:.06em;margin-top:3px}
+@keyframes pop{0%{opacity:0;transform:translateX(-14px)}10%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0;transform:translateX(-6px)}}
+@media (max-width:760px){#callout{bottom:calc(env(safe-area-inset-bottom,0px) + 64px)}}
+body.touch #callout{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (min-width:561px){body.touch #callout{top:calc(env(safe-area-inset-top,0px) + 176px)}}
 
 .overlay{position:fixed;inset:0;display:flex;align-items:center;overflow-y:auto;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
@@ -140,7 +145,7 @@ body.touch .kbwrap{display:none}
 .tb.small{font-size:11px;letter-spacing:.08em}
 
 @media (max-width:560px){ .hud-left{display:none} #hud{justify-content:flex-end} .fuel{width:130px} .overlay{background:rgba(6,8,16,.88)} }
-@media (prefers-reduced-motion:reduce){ #callout.show{animation-duration:2.2s} .card{transition:none} }
+@media (prefers-reduced-motion:reduce){ #callout.show{animation-duration:2.4s} .card{transition:none} }
 </style>
 
 </head>
